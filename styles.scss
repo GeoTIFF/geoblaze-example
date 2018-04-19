@@ -1,0 +1,44 @@
+@import "~leaflet/dist/leaflet.css";
+
+$tool-spacing-top: 30px;
+$tool-spacing-left: 60px;
+$tool-padding: 20px;
+
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.tool {
+  position: absolute;
+  top: $tool-spacing-top;
+  left: $tool-spacing-left;
+  padding: $tool-padding;
+  background: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 0px 30px 20px -20px rgba(0, 0, 0, 0.2);
+  width: calc(100% - #{$tool-spacing-left * 2});
+  z-index: 9999;
+
+  > button {
+    padding: 16px;
+    font-weight: bold;
+    background: #6a1b9a;
+    color: white;
+  }
+
+  > span {
+    display: block;
+    font-size: 32px;
+    margin-top: 8px;
+    font-weight: bold;
+  }
+}
