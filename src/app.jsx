@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import L from 'leaflet';
+import { load } from 'geoblaze';
+import GeoRasterLayer from 'georaster-layer-for-leaflet';
 import  '../styles.scss';
 
 const RASTER_URL = 'https://s3.amazonaws.com/geoblaze/spam2005v2r0_production_wheat_rainfed.tiff';
