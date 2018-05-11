@@ -24,6 +24,14 @@ export default class App extends React.Component {
     }).addTo(map);
 
     this.setState({ map });
+
+    loadRaster();
+  }
+
+  loadRaster () {
+    load(RASTER_URL).then(georaster => {
+      const raster = new GeoRasterLayer({ georaster, opacity: 0.7, resolution: Math.pow(2, 6) });
+    });
   }
 
   render () {
