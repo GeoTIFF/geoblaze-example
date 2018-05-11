@@ -15,7 +15,7 @@ export default class App extends React.Component {
     map: null,
   }
 
-  setupMap () {
+  async setupMap () {
     const map = L.map('map').setView([0, 0], 2);
     map.options.minZoom = 2;
 
@@ -25,13 +25,12 @@ export default class App extends React.Component {
 
     this.setState({ map });
 
-    loadRaster();
+    await this.loadRaster();
   }
 
-  loadRaster () {
-    load(RASTER_URL).then(georaster => {
-      const raster = new GeoRasterLayer({ georaster, opacity: 0.7, resolution: Math.pow(2, 6) });
-    });
+  async loadRaster () {
+    const georaster = await load(RASTER_URL);
+    return new GeoRasterLayer({ georaster, opacity: 0.7, resolution: Math.pow(2, 6) });
   }
 
   render () {
