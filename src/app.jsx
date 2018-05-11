@@ -14,6 +14,7 @@ export default class App extends React.Component {
 
   state = {
     map: null,
+    result: null,
   }
 
   async setupMap () {
@@ -44,6 +45,7 @@ export default class App extends React.Component {
 
   calculateSum () {
     const result = sum(this.state.georaster, geoJSON);
+    this.setState({ result });
   }
 
   render () {
@@ -53,6 +55,7 @@ export default class App extends React.Component {
         <section className="tool">
           <h3>Welcome to the Demo!</h3>
           <button onClick={() => this.calculateSum()}>Calculate Sum</button>
+          <span>{ this.state.result }</span>
         </section>
       </Fragment>
     );
