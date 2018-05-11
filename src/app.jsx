@@ -25,7 +25,9 @@ export default class App extends React.Component {
 
     this.setState({ map });
 
-    await this.loadRaster();
+    const raster = await this.loadRaster();
+    raster.addTo(this.state.map);
+    this.setState({ georaster: raster.georaster });
   }
 
   async loadRaster () {
