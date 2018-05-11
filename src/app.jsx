@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import L from 'leaflet';
 import { load } from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
+import geoJSON from './ukraine.json';
 import  '../styles.scss';
 
 const RASTER_URL = 'https://s3.amazonaws.com/geoblaze/spam2005v2r0_production_wheat_rainfed.tiff';
@@ -28,11 +29,17 @@ export default class App extends React.Component {
     const raster = await this.loadRaster();
     raster.addTo(this.state.map);
     this.setState({ georaster: raster.georaster });
+
+    this.loadGeoJSON();
   }
 
   async loadRaster () {
     const georaster = await load(RASTER_URL);
     return new GeoRasterLayer({ georaster, opacity: 0.7, resolution: Math.pow(2, 6) });
+  }
+
+  loadGeoJSON () {
+    L.geoJSON(geoJSON).addTo(this.state.map);
   }
 
   render () {
