@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import L from 'leaflet';
-import { load } from 'geoblaze';
+import { load, sum } from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
 import geoJSON from './ukraine.json';
 import  '../styles.scss';
@@ -42,12 +42,17 @@ export default class App extends React.Component {
     L.geoJSON(geoJSON).addTo(this.state.map);
   }
 
+  calculateSum () {
+    const result = sum(this.state.georaster, geoJSON);
+  }
+
   render () {
     return (
       <Fragment>
         <div id="map"></div>
         <section className="tool">
           <h3>Welcome to the Demo!</h3>
+          <button onClick={() => this.calculateSum()}>Calculate Sum</button>
         </section>
       </Fragment>
     );
