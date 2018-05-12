@@ -1,6 +1,4 @@
 import React, { Fragment } from 'react';
-import { load, bandArithmetic } from 'geoblaze';
-import GeoRasterLayer from 'georaster-layer-for-leaflet';
 import L from 'leaflet';
 import { load, bandArithmetic } from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
@@ -15,6 +13,7 @@ export default class App extends React.Component {
 
   state = {
     map: null,
+    raster: null,
   }
 
   async setupMap () {
