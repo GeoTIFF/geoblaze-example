@@ -54,6 +54,7 @@ export default class App extends React.Component {
         <div id="map"></div>
         <section className="tool">
           <h3>Welcome to the Demo (Part 2)!</h3>
+          <button onClick={() => this.calculateNDVI()}>Calculate NDVI</button>
         </section>
       </Fragment>
     );
