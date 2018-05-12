@@ -39,9 +39,13 @@ export default class App extends React.Component {
   async calculateNDVI () {
     // NIR, Red, Green - from our GeoTIFF
     // a, b, c - expected band references in geoblaze
-    const { raster } = this.state;
+    const { raster, map } = this.state;
     const ndviGeoRaster = await bandArithmetic(raster.georaster, '(a - b) / (a + b)');
     const ndviRaster = new GeoRasterLayer({ georaster: ndviGeoRaster, opacity: 0.7, resolution: 128 });
+
+    map.removeLayer(raster);
+    map.addLayer(ndviRaster);
+    this.setState({ raster: ndviRaster });
   }
 
   render () {
