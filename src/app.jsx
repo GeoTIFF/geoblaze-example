@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react';
+import { load, bandArithmetic } from 'geoblaze';
+import GeoRasterLayer from 'georaster-layer-for-leaflet';
 import L from 'leaflet';
 import { load, bandArithmetic } from 'geoblaze';
 import GeoRasterLayer from 'georaster-layer-for-leaflet';
